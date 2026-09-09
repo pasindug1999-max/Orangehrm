@@ -10,7 +10,7 @@ test.describe("Login Tests", function() {
     for (let i =0; i < loginData.length; i++) {
 
 
-        test(`Login with credentials - ${loginData[i].username} - ${loginData[i].password}`, async ({page})=>{
+        test(`Login with credentials - ${loginData[i].id}`, async ({page})=>{
 
             const loginpage = new Login(page);
 
@@ -18,7 +18,20 @@ test.describe("Login Tests", function() {
 
             await loginpage.loginToApp(loginData[i].username, loginData[i].password);
 
-            
+            if (loginData[i].id === "Valid login") {
+
+                await expect(page).toHaveURL("/dashboard/");
+
+            } else if (loginData[i].id === "Empty Credentials") {
+
+                await expect(page.getByText("Required")).toBeVisible();
+
+
+            } else {
+
+                await expect(page.getByText("Invalid credentials")).toBeVisible();
+            }
+
 
 
             

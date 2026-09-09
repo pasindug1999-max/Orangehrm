@@ -1,25 +1,30 @@
 [
     {
+        "id": "Valid login",
         "username": "admin",
         "password": "admin123"
     },
 
     {
+        "id": "Invalid login",
         "username": "user",
         "password": "xyz123"
     },
 
     {
+        "id": "Invalid username",
         "username": "user",
         "password": "admin123"
     },
 
     {
+        "id": "Invalid password",
         "username": "admin",
         "password": "xyz123"
     },
 
     {
+        "id" : "Empty credentials",
         "username": "",
         "password": ""
     }
