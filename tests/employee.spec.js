@@ -49,10 +49,9 @@ test.describe("Employee Tests", function (){
         await employeepage.openEmployeeDetails();
         await employeepage.editEmployeeDetails();
 
+        await expect(page.getByText("Successfully Updated")).toBeVisible();
 
-
-
-    })
+    });
 
 
 
