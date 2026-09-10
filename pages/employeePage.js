@@ -13,6 +13,12 @@ class Employee {
         this.employeeName = page.getByPlaceholder("Type for hints...").first();
         this.searchButton = page.getByRole("button",{name:"Search"} );
 
+        this.selectEmployeeDetails = page.getByText("Paul Wood", { exact: true });
+        this.editMiddleName = page.getByPlaceholder("Middle Name");
+        this.saveEdit =page.getByRole("button", {name: "Save"}).first();
+
+
+
 
     }
 
@@ -42,6 +48,19 @@ class Employee {
         await this.employeeName.fill("Paul Wood");
         await this.searchButton.click();
     }
+
+    async openEmployeeDetails() {
+
+        await this.selectEmployeeDetails.click();
+    }
+
+    async editEmployeeDetails() {
+
+        await this.editMiddleName.fill("Max");
+        await this.saveEdit.click();
+    }
+
+    
 }
 
 

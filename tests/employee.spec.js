@@ -31,7 +31,7 @@ test.describe("Employee Tests", function (){
 
     });
 
-    test.only("Search Employee", async ({page})=>{
+    test("Search Employee", async ({page})=>{
 
         const employeepage = new Employee(page);
         await employeepage.clickPIM();
@@ -40,6 +40,21 @@ test.describe("Employee Tests", function (){
         await expect(page.getByText("Paul Wood")).toBeVisible();
         
     });
+
+    test.only("Edit Employee details", async ({page})=>{
+
+        const employeepage = new Employee(page);
+        await employeepage.clickPIM();
+        await employeepage.searchEmployee();
+        await employeepage.openEmployeeDetails();
+        await employeepage.editEmployeeDetails();
+
+
+
+
+    })
+
+
 
 
     
