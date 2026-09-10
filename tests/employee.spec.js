@@ -36,7 +36,11 @@ test.describe("Employee Tests", function (){
         const employeepage = new Employee(page);
         await employeepage.clickPIM();
         await employeepage.searchEmployee();
+
+        await expect(page.getByText("Paul Wood")).toBeVisible();
+        
     });
+
 
     
 
