@@ -25,11 +25,17 @@ test.describe("Employee Tests", function (){
         await employeepage.clickPIM();
         await employeepage.clickAddEmployee();
         await employeepage.addEmployeeDetails();
-        
+
         await expect(page.getByText("Successfully Saved", { exact: true })).toBeVisible();
 
-        
 
+    });
+
+    test.only("Search Employee", async ({page})=>{
+
+        const employeepage = new Employee(page);
+        await employeepage.clickPIM();
+        await employeepage.searchEmployee();
     });
 
     

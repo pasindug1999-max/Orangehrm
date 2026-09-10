@@ -10,6 +10,9 @@ class Employee {
         this.lastName = page.getByPlaceholder("Last Name");
         this.saveButton = page.getByRole("button", {name: "Save"});
 
+        this.employeeName = page.getByPlaceholder("Type for hints...").first();
+        this.searchButton = page.getByRole("button",{name:"Search"} );
+
 
     }
 
@@ -32,6 +35,12 @@ class Employee {
         await this.lastName.fill("Smith");
         await this.saveButton.click();
 
+    }
+
+    async searchEmployee() {
+
+        await this.employeeName.fill("Paul Wood");
+        await this.searchButton.click();
     }
 }
 
