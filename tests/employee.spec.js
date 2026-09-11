@@ -78,6 +78,16 @@ test.describe("Employee Tests", function (){
 
     });
 
+    test("Verify an employee deleted exists", async ({page})=>{
+
+        const employeepage = new Employee(page);
+        await employeepage.clickPIM();
+        await employeepage.searchEmployee();
+
+        await expect(page.getByText("No Records Found")).toBeVisible();
+
+    })
+
     
 
     
