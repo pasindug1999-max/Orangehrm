@@ -11,12 +11,13 @@ class Employee {
         this.saveButton = page.getByRole("button", {name: "Save"});
 
         this.employeeName = page.getByPlaceholder("Type for hints...").first();
+        this.employeeId = page.locator("//input[@class='oxd-input oxd-input--active']").nth(1)
         this.searchButton = page.getByRole("button",{name:"Search"} );
+
 
         this.selectEmployeeDetails = page.getByText("Paul Wood", { exact: true });
         this.editMiddleName = page.getByPlaceholder("Middle Name");
         this.saveEdit =page.getByRole("button", {name: "Save"}).first();
-
 
 
 
@@ -46,6 +47,11 @@ class Employee {
     async searchEmployee() {
 
         await this.employeeName.fill("Paul Wood");
+        await this.searchButton.click();
+    }
+
+    async searchEmployeeById() {
+        await this.employeeId.fill("0100");
         await this.searchButton.click();
     }
 
