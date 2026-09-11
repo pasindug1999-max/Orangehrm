@@ -66,17 +66,21 @@ test.describe("Employee Tests", function (){
 
     });
 
-    test.only("Delete Employee", async ({page})=>{
+    test("Delete Employee", async ({page})=>{
 
         const employeepage = new Employee(page);
         await employeepage.clickPIM();
         await employeepage.searchEmployee();
         await employeepage.deleteEmployee();
 
-        
+        await expect(page.getByText("Successfully Deleted")).toBeVisible();
 
 
     });
+
+    
+
+    
 
 
 
