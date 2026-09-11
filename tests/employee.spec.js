@@ -41,7 +41,7 @@ test.describe("Employee Tests", function (){
         
     });
 
-    test.only("Search Employee by ID", async ({page})=>{
+    test("Search Employee by ID", async ({page})=>{
 
         const employeepage = new Employee(page);
         await employeepage.clickPIM();
@@ -65,6 +65,20 @@ test.describe("Employee Tests", function (){
         await expect(page.getByText("Successfully Updated")).toBeVisible();
 
     });
+
+    test.only("Delete Employee", async ({page})=>{
+
+        const employeepage = new Employee(page);
+        await employeepage.clickPIM();
+        await employeepage.searchEmployee();
+        await employeepage.deleteEmployee();
+
+        
+
+
+    });
+
+
 
     
 

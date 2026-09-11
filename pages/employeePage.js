@@ -9,15 +9,15 @@ class Employee {
         this.middleName = page.getByPlaceholder("Middle Name");
         this.lastName = page.getByPlaceholder("Last Name");
         this.saveButton = page.getByRole("button", {name: "Save"});
-
         this.employeeName = page.getByPlaceholder("Type for hints...").first();
         this.employeeId = page.locator("//input[@class='oxd-input oxd-input--active']").nth(1)
         this.searchButton = page.getByRole("button",{name:"Search"} );
-
-
         this.selectEmployeeDetails = page.getByText("Paul Wood", { exact: true });
         this.editMiddleName = page.getByPlaceholder("Middle Name");
-        this.saveEdit =page.getByRole("button", {name: "Save"}).first();
+        this.saveEdit = page.getByRole("button", {name: "Save"}).first();
+        this.deleteIcon = page.getByRole("button").filter({has: page.locator("i.bi-trash")});
+        this.deleteButon = page.getByRole("button", {name: "Yes, Delete"});
+
 
 
 
@@ -64,6 +64,12 @@ class Employee {
 
         await this.editMiddleName.fill("Max");
         await this.saveEdit.click();
+    }
+
+    async deleteEmployee() {
+
+        await this.deleteIcon.click();
+        await this.deleteButon.click();
     }
 
     
