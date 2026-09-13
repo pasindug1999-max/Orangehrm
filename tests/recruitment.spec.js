@@ -30,6 +30,15 @@ test.describe("Recruitment Tests", function(){
         
     });
 
+    test("Search created candidate using  Job Title", async ({page})=>{
+
+        const recruitmentpage = new Recruitment(page);
+        await recruitmentpage.clickRecruitmentMenu();
+        await recruitmentpage.searchCandidate();
+        await expect(page.getByText("Peter Jones Smith")).toBeVisible();
+        
+    })
+
 
 
 })

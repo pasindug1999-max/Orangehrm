@@ -16,6 +16,12 @@ class Recruitment {
         this.notes = page.getByPlaceholder("Type here").nth(2);
         this.consent = page.locator(".oxd-checkbox-input");
         this.save = page.getByRole("button", {name: "Save"});
+        this.reject = page.getByRole("button", {name: "Reject"});
+        this.shortlist = page.getByRole("button", {name: "Shortlist"});
+        this.jobTitle = page.locator(".oxd-select-text-input").first();
+        this.jobTitleDropdown = page.locator(".oxd-select-dropdown");
+        this.search = page.getByRole("button", {name: "Search"});
+
 
     }
 
@@ -45,10 +51,17 @@ class Recruitment {
         await this.notes.fill("Job resume");
         await this.consent.click();
         await this.save.click();
-;
-        
-        
+   
        
+    }
+
+    async searchCandidate() {
+
+        await this.jobTitle.click();
+        await this.jobTitleDropdown.getByText("Account Assistant", { exact: true }).click();
+        await this.search.click();
+        
+
     }
 }
 
