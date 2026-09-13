@@ -37,7 +37,20 @@ test.describe("Recruitment Tests", function(){
         await recruitmentpage.searchCandidate();
         await expect(page.getByText("Peter Jones Smith")).toBeVisible();
         
-    })
+    });
+
+
+    // Bug/Defect
+    test.only("Shortlist candidate", async ({page})=>{
+
+        const recruitmentpage = new Recruitment(page);
+        await recruitmentpage.clickRecruitmentMenu();
+        await recruitmentpage.searchCandidate();
+        await recruitmentpage.acceptCandidate();
+        await expect(page.locator(".oxd-toast")).toContainText("Unexpected Error Occurred");
+
+
+    });
 
 
 
