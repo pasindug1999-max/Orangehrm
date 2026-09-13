@@ -6,7 +6,6 @@ class Leave {
         this.leaveMenu = page.getByRole("link", {name: "Leave"});
         this.apply = page.getByRole("link", {name: "Apply"});
         this.dropdown = page.locator(".oxd-select-text-input");
-        this.leaveType = page.getByText("US - Bereavement", {exact:true});
         this.fromDate = page.getByPlaceholder("yyyy-dd-mm")
         this.selectStartDate = page.locator("oxd-calendar-date");
         this.toDate = page.getByPlaceholder("yyyy-dd-mm");
@@ -28,8 +27,8 @@ class Leave {
 
     async selectLeaveType() {
 
-        await this.dropdown.click();
-        await this.leaveType.click();
+        await this.dropdown.selectOption("US - Beravement");
+        
     }
 
     async selectFromDate() {
@@ -54,5 +53,5 @@ class Leave {
 
 }
 
-module.exportes = Leave;
+module.exports = Leave;
 
