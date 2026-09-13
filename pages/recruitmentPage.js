@@ -24,6 +24,8 @@ class Recruitment {
         this.reject = page.getByRole("button", {name: "Reject"});
         this.shortlistNote = page.getByPlaceholder("Type here");
         this.saveShortlist = page.getByRole("button", {name: "Save"}); 
+        this.rejectNote = page.getByPlaceholder("Type here");
+        this.saveReject = page.getByRole("button", {name: "Save"});
 
 
     }
@@ -71,9 +73,18 @@ class Recruitment {
 
         await this.view.click();
         await this.shortlist.click();
+        await this.shortlistNote.fill("Candidate shortlisted");
         await this.saveShortlist.click();
 
 
+    }
+
+    async rejectCandidate() {
+
+        await this.view.click();
+        await this.reject.click();
+        await this.rejectNote.fill("Candidate rejected");
+        await this.saveReject.click();
     }
 }
 

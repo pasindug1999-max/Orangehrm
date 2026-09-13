@@ -41,7 +41,7 @@ test.describe("Recruitment Tests", function(){
 
 
     // Bug/Defect
-    test.only("Shortlist candidate", async ({page})=>{
+    test("Shortlist candidate", async ({page})=>{
 
         const recruitmentpage = new Recruitment(page);
         await recruitmentpage.clickRecruitmentMenu();
@@ -51,6 +51,19 @@ test.describe("Recruitment Tests", function(){
 
 
     });
+
+    // Bug/Defect
+    test("Reject Candidate", async ({page})=>{
+
+        const recruitmentpage = new Recruitment(page);
+        await recruitmentpage.clickRecruitmentMenu();
+        await recruitmentpage.searchCandidate();
+        await recruitmentpage.rejectCandidate();
+        await expect(page.locator(".oxd-toast")).toContainText("Unexpected Error Occurred");
+
+    })
+
+
 
 
 
