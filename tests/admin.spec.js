@@ -31,7 +31,7 @@ test.describe("Admin Tests", function(){
         
     });
 
-    test.only("Edit Admin username by changing the last two characters", async ({page})=>{
+    test("Edit Admin username by changing the last two characters", async ({page})=>{
 
         const adminpage = new Admin(page);
 
@@ -43,6 +43,20 @@ test.describe("Admin Tests", function(){
 
 
     })
+
+    test("Search Admin", async ({page})=>{
+
+        const adminpage = new Admin(page);
+
+        await adminpage.clickAdmin();
+        await adminpage.searchEmployee();
+        await expect(page.getByText("Thomas Benny")).toBeVisible();
+        
+
+
+    })
+
+
 
 
 })
