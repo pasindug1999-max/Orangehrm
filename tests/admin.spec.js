@@ -25,6 +25,9 @@ test.describe("Admin Tests", function(){
         await adminpage.clickAdmin();
         await adminpage.addAdmin();
         await adminpage.addAdminDetails();
+
+        await expect(page.getByText("Successfully Saved", { exact: true })).toBeVisible();
         
-    })
+        
+    });
 })
