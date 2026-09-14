@@ -2,6 +2,7 @@ const {test, expect} = require('@playwright/test');
 
 const Login = require("../pages/loginPage.js");
 const Recruitment = require("../pages/recruitmentPage.js");
+const Vacancy = require("../pages/vacanciesPage.js");
 
 const username = "Admin";
 const password = "admin123";
@@ -62,6 +63,20 @@ test.describe("Recruitment Tests", function(){
         await expect(page.locator(".oxd-toast")).toContainText("Unexpected Error Occurred");
 
     })
+
+    test("Add Vacancy", async ({page})=>{
+
+        
+        const vacanciespage = new Vacancy(page)
+        await vacanciespage.clickRecruitmentMenu();
+        await vacanciespage.addVacancy();
+        await vacanciespage.addVacancyDetails();
+        await expect(vacanciespage.vacancyName).toHaveValue("Associate Account Assistant");
+        
+
+
+    })
+
 
 
 
