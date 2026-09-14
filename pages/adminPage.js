@@ -22,6 +22,7 @@ class Admin {
         this.editButton = this.userRow.getByRole("button").filter({ has: page.locator("i.bi-pencil-fill")});
         this.editUsername = page.locator("input").nth(2);
         this.saveEdit = page.getByRole("button", {name:"Save"});
+        this.passwordError = page.getByText("Passwords do not match", { exact: true });
 
 
 
@@ -70,6 +71,23 @@ class Admin {
         await this.editUsername.press("Backspace");
         await this.editUsername.pressSequentially("25");
         await this.saveEdit.click();
+
+    }
+
+    async passwordCheck() {
+
+        await this.userRole.click();
+        await this.dropdownMenu.getByText("Admin", {exact:true}).click();
+        await this.employeeName.fill("Thomas Kutty Benny");
+        await this.employeeSelect.getByText("Thomas Kutty Benny", { exact: true }).click();
+        await this.status.click();
+        await this.statusDropdown.getByText("Enabled", {exact:true}).click();
+        await this.username.fill("Thomas12");
+        await this.password.fill("thomas123@#");
+        await this.confirmPassword.fill("thomas123");
+        await this.saveButton.click();
+
+        
 
     }
 

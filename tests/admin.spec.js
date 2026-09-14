@@ -54,7 +54,20 @@ test.describe("Admin Tests", function(){
         
 
 
-    })
+    });
+
+    test("Verify adding mismatched passwords", async ({page})=>{
+
+        const adminpage = new Admin(page);
+
+        await adminpage.clickAdmin();
+        await adminpage.addAdmin();
+        await adminpage.passwordCheck();
+
+        await expect (adminpage.passwordError).toBeVisible();
+
+
+    });
 
 
 
