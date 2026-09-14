@@ -30,4 +30,18 @@ test.describe("Admin Tests", function(){
         
         
     });
+
+    test.only("Edit Admin details", async ({page})=>{
+
+        const adminpage = new Admin(page);
+
+        await adminpage.clickAdmin();
+        await adminpage.searchEmployee();
+        await adminpage.editAdminDetails();
+        await page.pause();
+
+
+    })
+
+
 })
