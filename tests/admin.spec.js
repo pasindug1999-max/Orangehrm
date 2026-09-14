@@ -31,14 +31,15 @@ test.describe("Admin Tests", function(){
         
     });
 
-    test.only("Edit Admin details", async ({page})=>{
+    test.only("Edit Admin username by changing the last two characters", async ({page})=>{
 
         const adminpage = new Admin(page);
 
         await adminpage.clickAdmin();
         await adminpage.searchEmployee();
         await adminpage.editAdminDetails();
-        await page.pause();
+        await expect (page.getByText("Successfully Updated", { exact: true })).toBeVisible();
+        
 
 
     })
