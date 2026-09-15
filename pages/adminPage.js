@@ -91,6 +91,12 @@ class Admin {
 
     }
 
+    async addemptyUser() {
+
+        await this.saveButton.click();
+
+    }
+
 
 }
 

@@ -69,6 +69,20 @@ test.describe("Admin Tests", function(){
 
     });
 
+    test("Verify adding an admin with empty fields", async ({page})=>{
+
+        const adminpage = new Admin(page);
+
+        await adminpage.clickAdmin();
+        await adminpage.addAdmin();
+        await adminpage.addemptyUser();
+
+        await expect(page.getByText("Required", { exact: true })).toHaveCount(5);
+
+
+
+    })
+
 
 
 
